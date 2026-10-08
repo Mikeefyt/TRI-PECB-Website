@@ -1,0 +1,23 @@
+# dependencies and build output
+node_modules
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+
+# local env files
+.env*
+
+# generated: screenshots and images extracted from "Reference screenshots.docx"
+screenshots
+reference_docx
+
+# local Claude Code settings
+.claude/settings.local.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
