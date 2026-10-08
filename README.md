@@ -1,6 +1,6 @@
-# ThinkRisk International — PECB Certification Training
+# Think Risk International — PECB Certification Training
 
-Marketing site for ThinkRisk International (PECB Authorized Training Partner, Australia & Malaysia).
+Marketing site for Think Risk International (PECB Authorized Training Partner, Australia & Malaysia).
 Built with Next.js 15 (App Router), TypeScript, Tailwind CSS v4, framer-motion, react-hook-form + zod and lucide-react.
 
 ## Setup

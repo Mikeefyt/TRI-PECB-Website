@@ -12,8 +12,8 @@ export default function NotFound() {
         <h1 className="heading-lg mt-6 md:mt-[34px]">
           Page not found.
         </h1>
-        <ButtonLink href="/" className="mt-10 w-[237px] md:mt-12">
-          ThinkRisk International
+        <ButtonLink href="/" className="mt-10 md:mt-12">
+          Think Risk International
         </ButtonLink>
       </div>
     </section>

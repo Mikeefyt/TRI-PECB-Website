@@ -40,7 +40,7 @@ export function Footer() {
         </Reveal>
 
         <div className="flex flex-col items-center gap-3 border-t border-line py-7 text-[13px] text-muted md:flex-row md:justify-between md:gap-6">
-          <p>© {year} ThinkRisk International</p>
+          <p>© {year} Think Risk International</p>
           <p className="flex items-center gap-4">
             <span>Australia</span>
             <span aria-hidden className="text-[#9aa7b8]">

@@ -47,13 +47,13 @@ const REFERENCE = [
   "The right depth for each role", "Match Foundation, Lead Implementer and Lead Auditor pathways to your team’s responsibilities.",
   "Flexible online learning", "Support professional development across Australia and Malaysia with self-paced access.",
   "Let’s start with your team’s goals.",
-  "04 / WHY THINKRISK INTERNATIONAL", "Knowledge with", "real-world purpose.",
-  "ThinkRisk International brings a practical perspective to risk, governance and assurance. Our PECB training pathways help professionals connect management system standards with everyday business decisions.",
+  "04 / WHY THINK RISK INTERNATIONAL", "Knowledge with", "real-world purpose.",
+  "Think Risk International brings a practical perspective to risk, governance and assurance. Our PECB training pathways help professionals connect management system standards with everyday business decisions.",
   "Find the right fit for you",
   "Practical perspective", "Learning grounded in operational risk, governance and assurance.",
   "Professional development", "Clear pathways from foundational knowledge to specialist capability.",
   "Regional access", "Online learning for individuals and teams in Australia and Malaysia.",
-  "A FEW THINGS TO KNOW", "Your questions,", "answered.", "Need help choosing?", "Talk to ThinkRisk ↗",
+  "A FEW THINGS TO KNOW", "Your questions,", "answered.", "Need help choosing?", "Talk to Think Risk ↗",
   "Which course level should I choose?", "How are the courses delivered?", "Does completing a course make me certified?",
   "Can we arrange training for a team?", "What is included in the course price?",
   "05 / TAKE YOUR NEXT STEP", "Let’s find your", "way forward.",
@@ -62,7 +62,7 @@ const REFERENCE = [
   "Full name", "Work email", "Organisation", "Training market", "What are you interested in?", "Your goals", "Submit Enquiry",
   "Your details will be placed into an email draft. Review and send it using your email app.",
   "Think forward.", "Build capability that matters.", "Contact",
-  `© ${new Date().getFullYear()} ThinkRisk International`, "Australia", "Malaysia", "Website privacy", "Back to top ↑",
+  `© ${new Date().getFullYear()} Think Risk International`, "Australia", "Malaysia", "Website privacy", "Back to top ↑",
 ];
 const PLACEHOLDERS = ["Your full name", "you@company.com", "Company name", "Your preferred level, team size or what you’d like to achieve…"];
 

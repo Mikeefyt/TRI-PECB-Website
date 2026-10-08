@@ -17,7 +17,7 @@ export function Faq() {
           </h2>
           <p className="mt-9 text-[15px] text-muted md:mt-[44px]">Need help choosing?</p>
           <Link href="#contact" className="mt-3 inline-block text-[15px] text-blue underline-offset-4 transition-colors hover:text-[#184f8c] hover:underline">
-            Talk to ThinkRisk ↗
+            Talk to Think Risk ↗
           </Link>
         </Reveal>
 

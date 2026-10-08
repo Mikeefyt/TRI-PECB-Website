@@ -35,14 +35,14 @@ export function WhyUs() {
     <section id="why-thinkrisk" aria-labelledby="why-title" className="border-t border-line bg-white py-20 md:py-[118px]">
       <div className="container-site grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,670px)] lg:gap-16">
         <Reveal>
-          <Eyebrow>04 / WHY THINKRISK INTERNATIONAL</Eyebrow>
+          <Eyebrow>04 / WHY THINK RISK INTERNATIONAL</Eyebrow>
           <h2 id="why-title" className="heading-lg mt-6 md:mt-[38px]">
             Knowledge with
             <br />
             real-world purpose.
           </h2>
           <p className="lead mt-8 max-w-[600px] md:mt-[40px]">
-            ThinkRisk International brings a practical perspective to risk, governance and assurance. Our PECB training pathways help professionals connect management system standards with everyday business decisions.
+            Think Risk International brings a practical perspective to risk, governance and assurance. Our PECB training pathways help professionals connect management system standards with everyday business decisions.
           </p>
           <ArrowLink href="#courses" className="mt-9 text-[15px] md:mt-[44px]" iconClassName="ml-6 size-3.5">
             Find the right fit for you

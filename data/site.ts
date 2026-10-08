@@ -6,8 +6,8 @@ export const ENQUIRY_EMAIL = "pecb@thinkrisk.com.au";
 // TODO: client to confirm the production domain (used for metadata, sitemap and JSON-LD).
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.thinkrisk.com.au";
 
-export const SITE_NAME = "ThinkRisk International";
-export const SITE_TITLE = "ThinkRisk International | PECB Certification Training";
+export const SITE_NAME = "Think Risk International";
+export const SITE_TITLE = "Think Risk International | PECB Certification Training";
 export const SITE_DESCRIPTION =
   "Build practical expertise in business continuity, AI governance and information security with PECB certification training.";
 
@@ -41,7 +41,7 @@ export const NAV: NavGroup[] = [
   {
     label: "About us",
     items: [
-      { label: "Why ThinkRisk International", href: "#why-thinkrisk" },
+      { label: "Why Think Risk International", href: "#why-thinkrisk" },
       { label: "FAQ", href: "#faq" },
     ],
   },
