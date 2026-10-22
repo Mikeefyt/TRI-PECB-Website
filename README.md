@@ -1,75 +1,76 @@
-# Think Risk International — PECB Certification Training
+# PECB Training | Think Risk International
 
-Marketing site for Think Risk International (PECB Authorized Training Partner, Australia & Malaysia).
-Built with Next.js 15 (App Router), TypeScript, Tailwind CSS v4, framer-motion, react-hook-form + zod and lucide-react.
+Next.js port of the published Think Risk International PECB training website, **version 23** (source commit `b24ad01c24ca3d78207aac1887614f1bc1a90616`, exported 22 October 2026).
 
-## Setup
+The site reproduces v23 exactly: same pages, copy, design, prices, dialogs, currency switching, pathway finder, enquiry form and motion effects. It is built as a **static export**, so `npm run build` produces plain HTML, CSS and JavaScript in `out/` that can be uploaded to any static host (including Hostinger) or deployed on Vercel.
+
+| Page | URL | Source |
+| --- | --- | --- |
+| Home | `/` | `app/page.tsx` |
+| Courses | `/courses/` | `app/courses/page.tsx` |
+| Training | `/corporate-training/` | `app/corporate-training/page.tsx` |
+| Pathway | `/your-pathway/` | `app/your-pathway/page.tsx` |
+| About Us | `/about/` | `app/about/page.tsx` |
+| FAQs | `/faqs/` | `app/faqs/page.tsx` |
+| Contact | `/contact/` | `app/contact/page.tsx` |
+
+## Run locally
 
 Requires Node.js 20 or later.
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
-npm run build      # production build (type-checks and lints)
-npm start          # serve the production build
+npm run dev        # development server, http://localhost:3000
 ```
 
-Other scripts (they need a running site on http://localhost:3000; `npm start` works):
+Build and preview the static export:
 
-| Script | What it does |
+```bash
+npm run build      # writes the static site to out/
+npm run check      # validates pages, assets and internal links in out/
+npm run preview    # serves out/ at http://127.0.0.1:4173/
+```
+
+## Where things live
+
+| What | File (v23 equivalent) |
 | --- | --- |
-| `npm run lint` / `npm run typecheck` | ESLint / TypeScript checks |
-| `npm run verify` | Browser checks: every reference string appears verbatim, plus form validation, mailto recipient/subject/body, tabs, AU/MY toggle and the accordion |
-| `npm run screenshots` | Screenshots of every section at 1920px and 375px into `screenshots/` |
-| `node scripts/lighthouse.mjs http://localhost:3000` | Lighthouse (mobile and desktop) |
-| `npm run icons` | Regenerates the favicon, Apple icon, Open Graph image and web-sized logo/badge from `public/brand/` |
+| Course fees (AUD and MYR), durations, descriptions, focus lists, course-detail and pathway wording | `lib/catalogue.ts` (`dist/app.js`, top) |
+| Page content | `app/**/page.tsx` (`dist/**/index.html`) |
+| Header and navigation dropdowns | `components/Header.tsx` |
+| Footer | `components/Footer.tsx` |
+| Course-detail and Website privacy dialogs, pricing currency | `components/SiteProvider.tsx` |
+| Courses catalogue and level filter | `components/CourseCatalogue.tsx` |
+| Home programme cards and particle animation | `components/ProgrammeStory.tsx` (`dist/particle-motion.js`) |
+| Pathway level chooser and course finder | `components/PathwayExplorer.tsx` |
+| Enquiry form (prepares an email draft) | `components/EnquiryForm.tsx` |
+| Cursor field, scroll progress, reveals and card tilt | `components/CursorField.tsx`, `components/ScrollProgress.tsx`, `lib/motion.ts` (`dist/cursor-animation.js`, `dist/app.js`) |
+| Styles | `app/styles/*.css`: the seven v23 stylesheets, unchanged, imported in v23's order in `app/layout.tsx` |
+| Logos, PECB badge, illustrations, favicon | `public/assets/` (`dist/assets/`) |
+| Canonical address | `NEXT_PUBLIC_SITE_URL` (see `lib/site.ts`) |
 
-The screenshot, verify and Lighthouse scripts use an installed Microsoft Edge or Google Chrome, so no Playwright browser download is needed.
+The enquiry address is `pecb@thinkrisk.com.au` (`ENQUIRY_EMAIL` in `lib/catalogue.ts`). The form does not send anything itself: it prepares an email draft that the visitor reviews and sends, as in v23. See `docs/ENQUIRY_REQUIREMENTS.md` for the planned direct-sending work.
 
-> **OneDrive note:** if `next build` fails with `EINVAL: invalid argument, readlink ... .next`, delete the `.next` folder and build again. OneDrive sometimes turns build files into cloud placeholders.
+## Checking against v23
 
-## Where to edit content
+The original v23 export is kept unchanged in `reference/v23/` (its `SOURCE-MANIFEST.json` hashes still verify). Two scripts compare the Next.js export with it in a browser (they use an installed Microsoft Edge or Chrome):
 
-| What | File |
-| --- | --- |
-| **Course prices (AUD and MYR)**, levels, durations, course descriptions, the "another PECB pathway" card and the pricing fine print | `data/courses.ts` |
-| **FAQ** questions and answers | `data/faq.ts` |
-| **Enquiry email address** (`ENQUIRY_EMAIL`), site URL, page title/description and nav dropdown items | `data/site.ts` |
-| Privacy page text | `app/privacy/page.tsx` |
-| Colours and type scale (design tokens) | `app/globals.css` (`:root` variables) |
-| Logo and PECB badge | `public/brand/` (then run `npm run icons`) |
-
-### Malaysian pricing
-
-Each level in `data/courses.ts` has `priceAUD` and `priceMYR`. While `priceMYR` is `null`, the site shows the AUD price even when **MY** is selected. Enter a number (e.g. `priceMYR: 1450`) and MY visitors will see `MYR 1,450`. The same applies to `ANOTHER_PATHWAY.priceMYR`.
-
-### Enquiry form
-
-The form doesn't send anything to a server. On submit it validates the fields (full name, valid work email and interest are required), then opens the visitor's email app with a draft addressed to `ENQUIRY_EMAIL`:
-
-- **Subject:** `PECB enquiry — {interest} — {full name}`
-- **Body:** a plain-text summary of every field
-
-A copy-to-clipboard button and a link to the draft are shown as a fallback. To change the recipient, edit `ENQUIRY_EMAIL` in `data/site.ts`.
-
-## Deploying to Vercel
-
-1. Push this folder to a Git repository (GitHub, GitLab or Bitbucket).
-2. In Vercel, choose **Add New → Project**, import the repository and keep the detected **Next.js** defaults (build command `next build`, output `.next`).
-3. Under **Settings → Environment Variables**, set `NEXT_PUBLIC_SITE_URL` to the production URL (e.g. `https://www.thinkrisk.com.au`). It's used for canonical URLs, the sitemap, robots.txt, Open Graph tags and JSON-LD.
-4. Deploy, then add the custom domain under **Settings → Domains**.
-
-Or deploy from the command line: `npx vercel` (preview) and `npx vercel --prod`.
-
-## Project structure
-
+```bash
+npm run build
+node scripts/serve.mjs out 4174                 # Next.js export
+node scripts/serve.mjs reference/v23/dist 4173  # original v23 (in a second terminal)
+npm run compare:v23         # text, links, metadata, images and full-page pixel diff, desktop + mobile
+npm run compare:behaviour   # filters, currency, 18 course enquiry links, form, finder, navigation, dialogs
 ```
-app/                 layout, home page, /privacy, 404, sitemap, robots, icons
-components/layout/   AnnouncementBar, Header, MobileMenu, RegionToggle, Footer (+ Logo, NavLink, BackToTop, Providers)
-components/sections/ Hero, HeroIllustration, StandardsStrip, Courses, Journey, Corporate, WhyUs, Faq, Contact
-components/ui/       Button, Card, Eyebrow, ArrowLink, Tabs, Accordion, IconTile (+ Reveal, SectionIntro)
-data/                courses.ts, faq.ts, site.ts
-lib/                 region.ts, mailto.ts, validation.ts, events.ts
-public/brand/        thinkrisk-logo.png, pecb-authorized-partner.png (+ generated web sizes)
-scripts/             screenshots, verify, lighthouse, icon generation
-```
+
+`node scripts/lighthouse.mjs <url>` runs Lighthouse against any URL.
+
+> **OneDrive note:** if a build fails with `EINVAL: invalid argument, readlink ... .next`, delete the `.next` folder and build again.
+
+## Deployment
+
+- **Hostinger or any static host:** run `npm run build`, then upload the contents of `out/` to the web root. Keep the folders so `/courses/` and the other routes resolve.
+- **Vercel:** import the repository; Vercel detects Next.js and serves the static export.
+- Set `NEXT_PUBLIC_SITE_URL` to the final address when building, so every canonical link, the sitemap and robots.txt use it. Until then they point to v23's temporary address.
+
+More detail: `docs/DEPLOYMENT.md`, `docs/CLAUDE_HANDOVER.md`, `docs/ENQUIRY_REQUIREMENTS.md`.

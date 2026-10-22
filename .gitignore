@@ -6,8 +6,9 @@ out
 next-env.d.ts
 .vercel
 
-# local env files
+# local env files (keep any future secrets out of the repo)
 .env*
+!.env.example
 
 # generated: screenshots and images extracted from "Reference screenshots.docx"
 screenshots

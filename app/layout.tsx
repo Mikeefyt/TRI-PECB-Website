@@ -1,48 +1,48 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
-import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
-import { Footer } from "@/components/layout/Footer";
-import { Header } from "@/components/layout/Header";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/data/site";
-import { Providers } from "@/components/layout/Providers";
-import "./globals.css";
-
-const geist = Geist({ subsets: ["latin"], display: "swap", variable: "--font-geist" });
+import Link from "next/link";
+import type { ReactNode } from "react";
+import { CursorField } from "@/components/CursorField";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { PageEffects } from "@/components/PageEffects";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { SiteProvider } from "@/components/SiteProvider";
+import { SITE_URL } from "@/lib/site";
+// v23 stylesheets, unchanged and in v23's cascade order.
+import "./styles/styles.css";
+import "./styles/theme.css";
+import "./styles/client.css";
+import "./styles/navy.css";
+import "./styles/motion.css";
+import "./styles/cursor-animation.css";
+import "./styles/particle-motion.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: SITE_TITLE, template: `%s | ${SITE_NAME}` },
-  description: SITE_DESCRIPTION,
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    url: "/",
-    siteName: SITE_NAME,
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    locale: "en_AU",
-  },
-  twitter: { card: "summary_large_image", title: SITE_TITLE, description: SITE_DESCRIPTION },
+  title: "PECB Training | Think Risk International",
+  icons: { icon: { url: "/assets/favicon.svg", type: "image/svg+xml" } },
 };
 
-export const viewport: Viewport = { themeColor: "#ffffff" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#07152c" };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en-AU" className={geist.variable}>
-      <body>
-        <a
-          href="#main"
-          className="sr-only z-[100] rounded-md bg-blue px-4 py-2 font-bold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
-        >
-          Skip to content
-        </a>
-        <Providers>
-          <AnnouncementBar />
+    <html lang="en-AU">
+      <body id="page-top">
+        <SiteProvider>
+          <CursorField />
+          <ScrollProgress />
+          <a className="skip-link" href="#main">
+            Skip to content
+          </a>
+          <div className="announcement">
+            PECB certification training <span>·</span> Self-paced. Online. Built around you. <Link href="/your-pathway/">Discover your pathway ↗</Link>
+          </div>
           <Header />
-          <main id="main">{children}</main>
+          {children}
           <Footer />
-        </Providers>
+          <PageEffects />
+        </SiteProvider>
       </body>
     </html>
   );

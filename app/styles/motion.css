@@ -1,0 +1,15 @@
+/* Scroll reveals and cursor-responsive colour and movement. */
+.scroll-progress{position:fixed;inset:0 0 auto;height:3px;z-index:80;pointer-events:none;background:transparent}.scroll-progress span{display:block;background:#5397ff;width:100%;height:100%;transform:scaleX(0);transform-origin:left;box-shadow:0 0 14px #2262f388}
+.scroll-reveal{transition:opacity .75s ease,translate .75s cubic-bezier(.22,1,.36,1);transition-delay:var(--reveal-delay,0ms)}
+.scroll-reveal.reveal-pending{opacity:0;translate:0 30px}.scroll-reveal.is-revealed{opacity:1;translate:0 0}
+.pointer-card{position:relative;--pointer-x:50%;--pointer-y:50%;--move-x:0px;--move-y:0px;--tilt-x:0deg;--tilt-y:0deg;transform-style:preserve-3d;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s,border-color .28s,background-color .28s;will-change:auto}
+.pointer-card:after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;background:radial-gradient(340px circle at var(--pointer-x) var(--pointer-y),#448bff24,transparent 70%);transition:opacity .25s;z-index:2}
+.pointer-card.is-pointer-hovered{transform:perspective(1000px) translate3d(var(--move-x),var(--move-y),0) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));border-color:#689fff;box-shadow:0 20px 45px #154ca625}
+.pointer-card.is-pointer-hovered:after{opacity:1}
+.programme-card.is-pointer-hovered .programme-body{background:#edf4ff}.programme-body{transition:background .25s}.course-card.is-pointer-hovered,.about-list article.is-pointer-hovered{background:#edf4ff}.pathway-choice.is-pointer-hovered:not([aria-pressed=true]){background:#deebff}.pathway-choice[aria-pressed=true].is-pointer-hovered{background:#123461}.home-page-card.is-pointer-hovered{background:#e6f0ff}
+.executive-photo img{transition:transform .85s cubic-bezier(.22,1,.36,1)}.executive-photo:hover img{transform:scale(1.035)}
+.client-hero h1{animation:heroCopyIn .9s cubic-bezier(.22,1,.36,1) both}.client-hero .hero-description{animation:heroCopyIn .9s .12s cubic-bezier(.22,1,.36,1) both}.executive-visual{animation:heroVisualIn 1.1s .15s cubic-bezier(.22,1,.36,1) both}
+@keyframes heroCopyIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heroVisualIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@media(hover:none){.programme-card:active,.course-card:active,.pathway-choice:active{background:#e6f0ff;border-color:#82b3ff}.pathway-choice[aria-pressed=true]:active{background:#163967}.pointer-card.is-pointer-hovered{transform:none}.pointer-card:after{display:none}}
+@media(prefers-reduced-motion:reduce){.scroll-reveal,.scroll-reveal.reveal-pending{opacity:1!important;translate:none!important;transition:none!important}.client-hero h1,.client-hero .hero-description,.executive-visual{animation:none!important}.pointer-card,.pointer-card.is-pointer-hovered,.executive-photo:hover img{transform:none!important;transition:none!important}.pointer-card:after{display:none}.scroll-progress{display:none}}

@@ -1,30 +1,25 @@
 {
-  "name": "thinkrisk-pecb",
+  "name": "think-risk-pecb-website",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "preview": "node scripts/serve.mjs out 4173",
+    "check": "node scripts/validate.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "screenshots": "node scripts/screenshots.mjs http://localhost:3000",
-    "verify": "node scripts/verify.mjs http://localhost:3000",
-    "icons": "node scripts/make-icons.mjs"
+    "compare:v23": "node scripts/compare-v23.mjs",
+    "compare:behaviour": "node scripts/compare-behaviour.mjs",
+    "serve:v23": "node scripts/serve.mjs reference/v23/dist 4173"
   },
   "dependencies": {
-    "@hookform/resolvers": "^5.9.1",
-    "framer-motion": "^14.0.0",
-    "lucide-react": "^1.53.0",
     "next": "^15.5.27",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "react-hook-form": "^7.89.0",
-    "zod": "^4.6.5"
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.7",
-    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.6.4",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
@@ -32,8 +27,7 @@
     "eslint-config-next": "^15.5.27",
     "lighthouse": "^12.8.2",
     "playwright-core": "^1.64.0",
-    "postcss": "^8.5.29",
-    "tailwindcss": "^4.3.3",
+    "sharp": "^0.35.5",
     "typescript": "^6.0.3"
   },
   "browserslist": [
@@ -41,5 +35,9 @@
     "edge 111",
     "firefox 128",
     "safari 16.4"
-  ]
+  ],
+  "description": "Think Risk International PECB training website (Next.js port of published v23)",
+  "engines": {
+    "node": ">=20"
+  }
 }

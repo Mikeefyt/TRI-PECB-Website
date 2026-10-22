@@ -1,0 +1,16 @@
+{
+  "name": "think-risk-pecb-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Think Risk International static PECB training website",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "build": "node scripts/validate.mjs",
+    "check": "node scripts/validate.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

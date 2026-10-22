@@ -1,9 +1,8 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/data/site";
+import { ROUTES, canonical } from "@/lib/site";
+
+export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    { url: SITE_URL, changeFrequency: "monthly", priority: 1 },
-    { url: `${SITE_URL}/privacy`, changeFrequency: "yearly", priority: 0.3 },
-  ];
+  return ROUTES.map((route) => ({ url: canonical(route), changeFrequency: "monthly", priority: route === "/" ? 1 : 0.8 }));
 }
